@@ -7,7 +7,8 @@ if [ "$(uname -m | grep -o 64)" == "64" ]; then
     export LD_LIBRARY_PATH=
 else
     # for 32 bit, this is safe
-    export LD_LIBRARY_PATH=/usr/libexec/droid-hybris/system/lib/:/vendor/lib:/system/lib
+    # TODO: Since /vendor is a symlink, do we really need /system/vendor/lib as well?
+    export LD_LIBRARY_PATH=/usr/libexec/droid-hybris/system/lib/:/vendor/lib:/system/lib:/system/vendor/lib
 fi
 
 # Save systemd notify socket name to let droid-init-done.sh pick it up later
